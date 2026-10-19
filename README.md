@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# navyri.online — Portafolio personal
 
-## Getting Started
+Portafolio personal de **Mariana Lemus** (navyri): proyectos universitarios
+mostrados en una línea de tiempo, con vista previa y enlace para probar cada
+uno en vivo.
 
-First, run the development server:
+**Stack:** Next.js 16 (App Router) · TypeScript · Tailwind CSS 4 · Vercel.
+
+## Desarrollo local
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Editar contenido (lo único que necesitas tocar)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Qué cambiar | Archivo |
+| --- | --- |
+| Nombre, correo, LinkedIn, avatar, semestre | `src/data/perfil.ts` |
+| Proyectos de la línea de tiempo | `src/data/proyectos.ts` |
+| Colores (tema) | `src/app/globals.css` (variables `:root`) |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Placeholder pendiente
 
-## Learn More
+- `src/data/perfil.ts` → `email: "hola@navyri.online"` es un marcador de
+  posición; cámbialo por tu correo real.
+- `src/data/perfil.ts` → `linkedin` está vacío; pega tu URL para que aparezca
+  el botón en Contacto.
+- `src/data/proyectos.ts` → los proyectos con `porConfirmar: true`
+  (Portfolio IngWeb v2, Horario-Ayane, BirthdayCard) no tienen enlaces
+  públicos todavía; agrega sus `enlaces` (o bórralos).
 
-To learn more about Next.js, take a look at the following resources:
+### Agregar un proyecto nuevo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Copia una entrada existente en `src/data/proyectos.ts` y ajusta `nombre`,
+`resumen`, `tecnologias` y `enlaces`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```ts
+{
+  nombre: "Mi proyecto",
+  resumen: "Una o dos frases que expliquen qué hace.",
+  tecnologias: ["Python", "FastAPI"],
+  enlaces: [
+    { etiqueta: "Probar en vivo", url: "https://...", tipo: "demo" },
+    { etiqueta: "Código", url: "https://github.com/navyri/...", tipo: "repo" },
+  ],
+}
+```
 
-## Deploy on Vercel
+Si el proyecto no tiene demo, deja solo el enlace de `repo`. Si aún no tiene
+enlaces públicos, agrega `porConfirmar: true`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Despliegue en Vercel + dominio navyri.online
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Sube el repo a GitHub:
+   ```bash
+   git add .
+   git commit -m "Portafolio inicial"
+   git branch -M main
+   git remote add origin https://github.com/navyri/PORTAFOLIO.git
+   git push -u origin main
+   ```
+2. En [vercel.com/new](https://vercel.com/new) → **Import** del repo →
+   Framework: Next.js (detectado automáticamente) → **Deploy**.
+3. **Settings → Domains** → agrega `navyri.online` (y `www`).
+   Vercel te mostrará los DNS a configurar en el registrador del dominio:
+   - Registro **A** `@` → `76.76.21.21`
+   - Registro **CNAME** `www` → `cname.vercel-dns.com`
+4. Vuelve a Vercel y pulsa **Refresh**; HTTPS se activa solo cuando los DNS
+   propaguen.
+
+> Ojo: `navyri.space` apunta a otro sitio; este portafolio vive en
+> **navyri.online**.
