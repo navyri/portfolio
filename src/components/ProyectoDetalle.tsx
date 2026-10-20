@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Ventana from "@/ui/Ventana";
 import { useIdioma } from "@/i18n/I18nProvider";
 import { grupos, porSlug } from "@/data/proyectos";
@@ -44,9 +45,9 @@ export default function ProyectoDetalle({ slug }: { slug: string }) {
   return (
     <div className="space-y-5 pt-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <a href="/" className="btn95">
-          {t("volver")}
-        </a>
+        <Link href="/proyectos" className="btn95">
+          {t("volverProyectos")}
+        </Link>
         <span className="etiqueta">C:\PORTAFOLIO\{p.slug.toUpperCase()}\</span>
       </div>
 
@@ -149,7 +150,7 @@ cd ${p.enlaces.find((e) => e.tipo === "repo")?.url.split("/").pop() ?? p.slug}
       </div>
 
       {/* Capturas */}
-      <Ventana titulo={t("capturasTit")} ruta="C:\\CAPTURAS">
+      <Ventana titulo={t("capturasTit")} ruta={"C:\\CAPTURAS"}>
         {p.capturas.length > 0 ? (
           <div className="grid gap-3 p-3 sm:grid-cols-2">
             {p.capturas.map((c) => (

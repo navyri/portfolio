@@ -2,18 +2,20 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useIdioma } from "@/i18n/I18nProvider";
 
 const enlaces = [
   { href: "/", clave: "navInicio" as const },
-  { href: "/#proyectos", clave: "navProyectos" as const },
-  { href: "/#acerca", clave: "navSobre" as const },
-  { href: "/#contacto", clave: "navContacto" as const },
+  { href: "/proyectos", clave: "navProyectos" as const },
+  { href: "/acerca", clave: "navSobre" as const },
+  { href: "/acerca#contacto", clave: "navContacto" as const },
 ];
 
 /** Barra de menú superior: el "taskbar" del sistema operativo. */
 export default function MenuBar() {
   const { idioma, setIdioma, t, tema, alternarTema } = useIdioma();
+  const ruta = usePathname();
   const [hora, setHora] = useState("--:--:--");
 
   useEffect(() => {
@@ -48,15 +50,24 @@ export default function MenuBar() {
         </Link>
 
         <nav className="flex items-center gap-1 overflow-x-auto">
-          {enlaces.map((e) => (
-            <a
-              key={e.href}
-              href={e.href}
-              className="shrink-0 px-2 py-1 text-[0.7rem] uppercase tracking-widest text-tenue hover:bg-vino hover:text-tinta"
-            >
-              {t(e.clave)}
-            </a>
-          ))}
+          {enlaces.map((e) => {
+            const activo =
+              e.href === "/" ? ruta === "/" : ruta.startsWith(e.href.split("#")[0]);
+            return (
+              <Link
+                key={e.href}
+                href={e.href}
+                className={`shrink-0 px-2 py-1 text-[0.7rem] uppercase tracking-widest ${
+                  activo
+                    ? "bg-vino-alto text-tinta"
+                    : "text-tenue hover:bg-vino hover:text-tinta"
+                }`}
+                aria-current={activo ? "page" : undefined}
+              >
+                {t(e.clave)}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">

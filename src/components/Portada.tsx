@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import Ventana from "@/ui/Ventana";
 import NowPlaying from "@/components/NowPlaying";
@@ -40,20 +41,20 @@ function Relojes() {
 function IconosEscritorio() {
   const { t } = useIdioma();
   const iconos = [
-    { href: "#proyectos", emoji: "🖥️", texto: t("iconProyectos") },
-    { href: "#acerca", emoji: "📁", texto: t("iconAcerca") },
-    { href: "#contacto", emoji: "✉️", texto: t("iconContacto") },
+    { href: "/proyectos", emoji: "🖥️", texto: t("iconProyectos") },
+    { href: "/acerca", emoji: "📁", texto: t("iconAcerca") },
+    { href: "/acerca#contacto", emoji: "✉️", texto: t("iconContacto") },
     { href: "#musica", emoji: "🎵", texto: t("iconMusica") },
   ];
   return (
     <aside className="flex flex-row gap-1 overflow-x-auto pt-2 pb-1 lg:flex-col lg:overflow-visible" aria-label="Escritorio">
       {iconos.map((i) => (
-        <a key={i.href} href={i.href} className="icono-escritorio shrink-0">
+        <Link key={i.href} href={i.href} className="icono-escritorio shrink-0">
           <span className="icono-caja" aria-hidden>
             {i.emoji}
           </span>
           <span className="icono-texto">{i.texto}</span>
-        </a>
+        </Link>
       ))}
     </aside>
   );
@@ -105,12 +106,12 @@ export default function Portada() {
                   {idioma === "es" ? perfil.taglineEs : perfil.taglineEn}
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <a href="#proyectos" className="btn95 btn95-primario">
+                  <Link href="/proyectos" className="btn95 btn95-primario">
                     ▶ {t("verProyectos")} ({totalProyectos})
-                  </a>
-                  <a href="#contacto" className="btn95">
+                  </Link>
+                  <Link href="/acerca#contacto" className="btn95">
                     ✉ {t("contactar")}
-                  </a>
+                  </Link>
                 </div>
               </div>
 

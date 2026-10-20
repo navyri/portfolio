@@ -23,7 +23,7 @@ export default function SobreMi() {
 
   return (
     <section id="acerca" className="pt-14">
-      <Ventana titulo={t("acercaTitulo")} ruta="C:\\USERS\\MARIANA\\DOCS">
+      <Ventana titulo={t("acercaTitulo")} ruta={"C:\\USERS\\MARIANA\\DOCS"}>
         <div className="grid gap-6 p-4 sm:p-6 lg:grid-cols-[auto_1.4fr_auto]">
           {/* Avatar + ficha */}
           <div className="mx-auto w-full max-w-[240px]">
