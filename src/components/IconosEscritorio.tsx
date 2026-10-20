@@ -22,10 +22,16 @@ function IconoMonitor() {
 function IconoPersona() {
   return (
     <svg viewBox="0 0 16 16" className="h-7 w-7" shapeRendering="crispEdges" aria-hidden>
-      <rect x="6" y="2" width="4" height="4" fill="currentColor" />
-      <rect x="5" y="6" width="6" height="3" fill="currentColor" />
-      <rect x="3" y="9" width="10" height="2" fill="currentColor" />
-      <rect x="1" y="11" width="14" height="3" fill="currentColor" />
+      {/* Cabeza redonda pixelada */}
+      <rect x="6" y="2" width="4" height="1" fill="currentColor" />
+      <rect x="5" y="3" width="6" height="4" fill="currentColor" />
+      <rect x="6" y="7" width="4" height="1" fill="currentColor" />
+      {/* Hombros en campana */}
+      <rect x="6" y="8" width="4" height="1" fill="var(--acento-txt)" />
+      <rect x="5" y="9" width="6" height="1" fill="var(--acento-txt)" />
+      <rect x="4" y="10" width="8" height="1" fill="var(--acento-txt)" />
+      <rect x="2" y="11" width="12" height="1" fill="var(--acento-txt)" />
+      <rect x="1" y="12" width="14" height="2" fill="var(--acento-txt)" />
     </svg>
   );
 }
