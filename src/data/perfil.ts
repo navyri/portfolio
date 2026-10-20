@@ -11,7 +11,7 @@ export const perfil = {
   avatar: "https://avatars.githubusercontent.com/u/160249239?v=4",
   github: "https://github.com/navyri",
   // PLACEHOLDER: cambia por tu correo real
-  email: "hola@navyri.online",
+  email: "marianaesguerra2005@gmail.com",
   // Opcional: deja "" para ocultar el botón
   linkedin: "",
   paisEs: "Colombia",

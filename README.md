@@ -37,8 +37,8 @@ npm run dev        # http://localhost:3000
 
 ### Placeholders pendientes
 
-- `src/data/perfil.ts` → `email: "hola@navyri.online"` es un marcador;
-  cámbialo por tu correo real. `linkedin` vacío oculta el botón.
+- `src/data/perfil.ts` → `email` ya es tu correo real; `linkedin` vacío
+  oculta el botón (agrega tu perfil cuando quieras mostrarlo).
 - Proyectos con `porConfirmar: true` (Portfolio IngWeb v2, Horario-Ayane,
   BirthdayCard): no están como públicos en GitHub; agrega sus enlaces en
   `src/data/proyectos.ts` o bórralos.
