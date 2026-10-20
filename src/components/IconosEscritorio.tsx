@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useIdioma } from "@/i18n/I18nProvider";
 
 /* Iconos pixel-art dibujados con la paleta del sitio (vino / acento / silver) */
@@ -63,11 +65,33 @@ function IconoNota() {
  * izquierda del contenido (fuera del contenedor, no le roban ancho a las
  * páginas). Su ancho es exactamente el hueco entre el borde y el contenido
  * central (max-w-6xl = 72rem): (100vw - 72rem) / 2.
+ * En vertical se adapta: mide la distancia que tiene el contenido de cada
+ * página al header y arranca los iconos exactamente ahí.
  * Solo aparece en pantallas desde 1360px, donde hay espacio libre
  * a los lados del contenido.
  */
 export default function IconosEscritorio() {
   const { t } = useIdioma();
+  const ruta = usePathname();
+  const [top, setTop] = useState(64); // pt-16 como arranque antes de medir
+
+  useEffect(() => {
+    const medir = () => {
+      const header = document.querySelector("header");
+      const main = document.querySelector("main");
+      const primero = main?.firstElementChild;
+      const headerAlto = header?.offsetHeight ?? 45;
+      const gap =
+        main && primero
+          ? primero.getBoundingClientRect().top - main.getBoundingClientRect().top
+          : 0;
+      setTop(Math.max(headerAlto, Math.round(headerAlto + gap)));
+    };
+    medir();
+    window.addEventListener("resize", medir);
+    return () => window.removeEventListener("resize", medir);
+  }, [ruta]);
+
   const iconos = [
     { href: "/proyectos", icon: <IconoMonitor />, texto: t("iconProyectos") },
     { href: "/acerca", icon: <IconoPersona />, texto: t("iconAcerca") },
@@ -77,7 +101,10 @@ export default function IconosEscritorio() {
 
   return (
     <aside
-      className="pointer-events-none fixed left-0 top-0 z-30 hidden h-screen w-[calc((100vw_-_72rem)/2)] flex-col items-center gap-1 pt-16 [@media(min-width:1360px)]:flex"
+      className="pointer-events-none fixed left-0 top-0 z-30 hidden h-screen w-[calc((100vw_-_72rem)/2)] flex-col items-center gap-1 [@media(min-width:1360px)]:flex"
+      style={{ paddingTop: top }}
+      aria-label="Escritorio"
+    >
       aria-label="Escritorio"
     >
       {iconos.map((i) => (
