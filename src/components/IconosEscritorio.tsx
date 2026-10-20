@@ -105,8 +105,6 @@ export default function IconosEscritorio() {
       style={{ paddingTop: top }}
       aria-label="Escritorio"
     >
-      aria-label="Escritorio"
-    >
       {iconos.map((i) => (
         <Link key={i.href} href={i.href} className="icono-escritorio pointer-events-auto">
           <span className="icono-caja" aria-hidden>
