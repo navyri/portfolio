@@ -57,13 +57,13 @@ export const grupos: Grupo[] = [
           {
             etiquetaEs: "Probar en vivo",
             etiquetaEn: "Try live",
-            url: "https://pony-archive.vercel.app",
+            url: "https://pony-archive.navyri.online",
             tipo: "demo",
           },
           { etiquetaEs: "Código", etiquetaEn: "Code", url: `${GH}/PonyArchive`, tipo: "repo" },
         ],
         tipo: "web",
-        demoUrl: "https://pony-archive.vercel.app",
+        demoUrl: "https://pony-archive.navyri.online",
         capturas: ["/capturas/ponyarchive-chat.jpg", "/capturas/ponyarchive-login.jpg"],
         destacado: true,
       },
@@ -106,13 +106,28 @@ export const grupos: Grupo[] = [
       {
         slug: "portfolio-ingweb-v2",
         nombre: "Portfolio IngWeb v2",
-        resumenEs: "Segunda versión del portafolio del curso de Ingeniería Web.",
-        resumenEn: "Second version of the Web Engineering course portfolio.",
+        resumenEs:
+          "Segunda versión del portafolio del curso de Ingeniería Web, desplegada en su propio subdominio.",
+        resumenEn:
+          "Second version of the Web Engineering course portfolio, deployed on its own subdomain.",
         tecnologias: ["TypeScript", "React"],
-        enlaces: [],
+        enlaces: [
+          {
+            etiquetaEs: "Probar en vivo",
+            etiquetaEn: "Try live",
+            url: "https://portfolio-2025.navyri.online",
+            tipo: "demo",
+          },
+          {
+            etiquetaEs: "Código",
+            etiquetaEn: "Code",
+            url: "https://github.com/1tsm1ri/Portfolio_IngWeb_ver2",
+            tipo: "repo",
+          },
+        ],
         tipo: "web",
+        demoUrl: "https://portfolio-2025.navyri.online",
         capturas: [],
-        porConfirmar: true,
       },
       {
         slug: "horario-ayane",
@@ -254,7 +269,7 @@ export const grupos: Grupo[] = [
           {
             etiquetaEs: "Jugar",
             etiquetaEn: "Play",
-            url: "https://whosthatpokemon-ingweb.netlify.app",
+            url: "https://pokemon.navyri.online",
             tipo: "demo",
           },
           {
@@ -265,7 +280,7 @@ export const grupos: Grupo[] = [
           },
         ],
         tipo: "web",
-        demoUrl: "https://whosthatpokemon-ingweb.netlify.app",
+        demoUrl: "https://pokemon.navyri.online",
         capturas: ["/capturas/pokemon.jpg"],
         destacado: true,
       },
@@ -281,13 +296,13 @@ export const grupos: Grupo[] = [
           {
             etiquetaEs: "Probar",
             etiquetaEn: "Try it",
-            url: "https://yesno-ingweb.netlify.app",
+            url: "https://yes-or-no.navyri.online",
             tipo: "demo",
           },
           { etiquetaEs: "Código", etiquetaEn: "Code", url: `${GH}/Yes_or_No`, tipo: "repo" },
         ],
         tipo: "web",
-        demoUrl: "https://yesno-ingweb.netlify.app",
+        demoUrl: "https://yes-or-no.navyri.online",
         capturas: ["/capturas/yesorno.jpg"],
       },
     ],

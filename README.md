@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://www.navyri.online" title="Abrir navyri.online en la nube">
-    <img src="https://64.media.tumblr.com/90a181475f0d4b8729503689a6051ef3/12e95d275a7dbda7-eb/s1280x1920/0ab0d9637d0978ab43677ce377a7f130cbc8d94a.pnj" height="150" alt="navyri.online — abrir el portafolio"/>
+    <img src="https://64.media.tumblr.com/90a181475f0d4b8729503689a6051ef3/12e95d275a7dbda7-eb/s1280x1920/0ab0d9637d0978ab43677ce377a7f130cbc8d94a.pnj" height="200" alt="navyri.online — abrir el portafolio"/>
   </a>
 </p>
 
@@ -65,7 +65,7 @@ npm run dev        # http://localhost:3000
 
 - `src/data/perfil.ts` → `email` ya es tu correo real; `linkedin` vacío
   oculta el botón (agrega tu perfil cuando quieras mostrarlo).
-- Proyectos con `porConfirmar: true` (Portfolio IngWeb v2, Horario-Ayane,
+- Proyectos con `porConfirmar: true` (Horario-Ayane,
   BirthdayCard): no están como públicos en GitHub; agrega sus enlaces en
   `src/data/proyectos.ts` o bórralos.
 - **Capturas de proyectos Java** (POO, citas veterinarias, gestión de
@@ -126,10 +126,10 @@ token (el callback ya no muestra credenciales).
    - Registro **CNAME** `www` → `496569c03d37b306.vercel-dns-017.com`
 4. Vuelve a Vercel y pulsa **Refresh**; HTTPS se activa solo.
 
-> Las demos de PonyArchive y navyri.space siguen corriendo en sus propios
-> dominios (Vercel/Render) y se embeben con iframe desde aquí. Si en el
-> futuro quieres re-hostearlas bajo `navyri.online` sin iframe, se pueden
-> compilar como estáticas con `base: "./"` dentro de `public/apps/`.
+> Las demos de los proyectos web se sirven desde subdominios de
+> `navyri.online` (pony-archive, pokemon, yes-or-no, portfolio-2025, lucha)
+> y se embeben con iframe desde aquí; navyri.space corre en su propio
+> dominio.
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=390F16"/>
