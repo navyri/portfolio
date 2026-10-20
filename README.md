@@ -65,9 +65,6 @@ npm run dev        # http://localhost:3000
 
 - `src/data/perfil.ts` → `email` ya es tu correo real; `linkedin` vacío
   oculta el botón (agrega tu perfil cuando quieras mostrarlo).
-- Proyectos con `porConfirmar: true` (Horario-Ayane,
-  BirthdayCard): no están como públicos en GitHub; agrega sus enlaces en
-  `src/data/proyectos.ts` o bórralos.
 - **Capturas de proyectos Java** (POO, citas veterinarias, gestión de
   empleados, camel racing): toma capturas de pantalla, guárdalas en
   `public/capturas/` y pon la ruta en `capturas: ["/capturas/archivo.jpg"]`.

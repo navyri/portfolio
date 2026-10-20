@@ -103,54 +103,6 @@ export const grupos: Grupo[] = [
         demoUrl: "http://navyri.space/",
         capturas: ["/capturas/navyri-space.jpg"],
       },
-      {
-        slug: "portfolio-ingweb-v2",
-        nombre: "Portfolio IngWeb v2",
-        resumenEs:
-          "Segunda versión del portafolio del curso de Ingeniería Web, desplegada en su propio subdominio.",
-        resumenEn:
-          "Second version of the Web Engineering course portfolio, deployed on its own subdomain.",
-        tecnologias: ["TypeScript", "React"],
-        enlaces: [
-          {
-            etiquetaEs: "Probar en vivo",
-            etiquetaEn: "Try live",
-            url: "https://portfolio-2025.navyri.online",
-            tipo: "demo",
-          },
-          {
-            etiquetaEs: "Código",
-            etiquetaEn: "Code",
-            url: "https://github.com/1tsm1ri/Portfolio_IngWeb_ver2",
-            tipo: "repo",
-          },
-        ],
-        tipo: "web",
-        demoUrl: "https://portfolio-2025.navyri.online",
-        capturas: [],
-      },
-      {
-        slug: "horario-ayane",
-        nombre: "Horario-Ayane",
-        resumenEs: "Proyecto personal de gestión de horarios.",
-        resumenEn: "Personal schedule management project.",
-        tecnologias: ["Por definir"],
-        enlaces: [],
-        tipo: "web",
-        capturas: [],
-        porConfirmar: true,
-      },
-      {
-        slug: "birthdaycard",
-        nombre: "BirthdayCard",
-        resumenEs: "Tarjeta de cumpleaños animada hecha a mano con HTML y CSS.",
-        resumenEn: "Animated birthday card handmade with HTML and CSS.",
-        tecnologias: ["HTML", "CSS"],
-        enlaces: [],
-        tipo: "web",
-        capturas: [],
-        porConfirmar: true,
-      },
     ],
   },
   {
@@ -304,6 +256,32 @@ export const grupos: Grupo[] = [
         tipo: "web",
         demoUrl: "https://yes-or-no.navyri.online",
         capturas: ["/capturas/yesorno.jpg"],
+      },
+      {
+        slug: "portfolio-ingweb-v2",
+        nombre: "Portfolio IngWeb v2",
+        resumenEs:
+          "Portafolio del curso de Ingeniería Web hecho a mano con HTML, CSS y JavaScript vanilla, desplegado en su propio subdominio.",
+        resumenEn:
+          "Web Engineering course portfolio handmade with HTML, CSS and vanilla JavaScript, deployed on its own subdomain.",
+        tecnologias: ["HTML", "CSS", "JavaScript"],
+        enlaces: [
+          {
+            etiquetaEs: "Probar en vivo",
+            etiquetaEn: "Try live",
+            url: "https://portfolio-2025.navyri.online",
+            tipo: "demo",
+          },
+          {
+            etiquetaEs: "Código",
+            etiquetaEn: "Code",
+            url: `${GH}/Portfolio_IngWeb_ver2`,
+            tipo: "repo",
+          },
+        ],
+        tipo: "web",
+        demoUrl: "https://portfolio-2025.navyri.online",
+        capturas: [],
       },
     ],
   },

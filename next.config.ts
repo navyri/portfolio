@@ -5,8 +5,6 @@ const slugs = [
   "camel-racing",
   "navyri-space",
   "portfolio-ingweb-v2",
-  "horario-ayane",
-  "birthdaycard",
   "poo-semestre",
   "citas-veterinarias",
   "gestion-empleados",
