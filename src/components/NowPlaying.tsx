@@ -99,9 +99,16 @@ export default function NowPlaying() {
 
   const contenido = (
     <div className="flex items-center gap-3 p-3">
+      {/* Ecualizador */}
+      <span className={`eq shrink-0 ${sonando ? "" : "eq-pausado"}`} aria-hidden>
+        {[0, 1, 2, 3, 4, 5].map((i) => (
+          <span key={i} style={{ animationDelay: `${i * 0.13}s` }} />
+        ))}
+      </span>
+
       {/* Texto */}
-      <div className="min-w-0 flex-1">
-        <p className="etiqueta flex items-center gap-1.5">
+      <div className="min-w-0 flex-1 text-right">
+        <p className="etiqueta flex items-center justify-end gap-1.5">
           <span
             className={`text-xs ${sonando ? "cursor texto-verde" : "text-tenue"}`}
             aria-hidden
@@ -113,13 +120,6 @@ export default function NowPlaying() {
         <p className="truncate texto-crt text-xl leading-tight text-tinta">{titulo}</p>
         <p className="truncate text-xs text-tenue">{artista}</p>
       </div>
-
-      {/* Ecualizador */}
-      <span className={`eq shrink-0 ${sonando ? "" : "eq-pausado"}`} aria-hidden>
-        {[0, 1, 2, 3, 4, 5].map((i) => (
-          <span key={i} style={{ animationDelay: `${i * 0.13}s` }} />
-        ))}
-      </span>
     </div>
   );
 

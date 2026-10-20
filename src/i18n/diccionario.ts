@@ -6,6 +6,7 @@ export const diccionario = {
     navInicio: "Inicio",
     navProyectos: "Proyectos",
     navSobre: "Acerca de",
+    navAcercaContacto: "Acerca / Contacto",
     navContacto: "Contacto",
     tema: "Tema",
     // Portada
@@ -108,6 +109,7 @@ export const diccionario = {
     navInicio: "Home",
     navProyectos: "Projects",
     navSobre: "About",
+    navAcercaContacto: "About / Contact",
     navContacto: "Contact",
     tema: "Theme",
     biosys: "PORTFOLIO.EXE",

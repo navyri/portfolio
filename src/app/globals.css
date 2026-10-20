@@ -378,6 +378,7 @@ section[id] {
   width: 76px;
   padding: 0.45rem 0.25rem;
   border: 1px solid transparent;
+  color: var(--tenue);
   cursor: pointer;
   user-select: none;
   transition: background 0.12s;

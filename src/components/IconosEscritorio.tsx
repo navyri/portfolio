@@ -19,13 +19,13 @@ function IconoMonitor() {
   );
 }
 
-function IconoCarpeta() {
+function IconoPersona() {
   return (
     <svg viewBox="0 0 16 16" className="h-7 w-7" shapeRendering="crispEdges" aria-hidden>
-      <rect x="1" y="4" width="6" height="2" fill="var(--vino-alto)" />
-      <rect x="1" y="5" width="14" height="9" fill="var(--vino-alto)" />
-      <rect x="2" y="7" width="12" height="6" fill="var(--acento-txt)" />
-      <rect x="3" y="9" width="6" height="1" fill="var(--fondo)" opacity="0.45" />
+      <rect x="6" y="2" width="4" height="4" fill="currentColor" />
+      <rect x="4" y="7" width="8" height="2" fill="currentColor" />
+      <rect x="2" y="9" width="12" height="2" fill="currentColor" />
+      <rect x="1" y="11" width="14" height="3" fill="currentColor" />
     </svg>
   );
 }
@@ -42,10 +42,12 @@ function IconoSobre() {
 function IconoNota() {
   return (
     <svg viewBox="0 0 16 16" className="h-7 w-7" shapeRendering="crispEdges" aria-hidden>
-      <rect x="6" y="3" width="7" height="2" fill="var(--tenue)" />
-      <rect x="11" y="3" width="2" height="8" fill="var(--tenue)" />
-      <rect x="7" y="9" width="5" height="3" fill="var(--acento-txt)" />
-      <rect x="6" y="12" width="6" height="1" fill="var(--acento-txt)" opacity="0.5" />
+      {/* Nota doble (♫) */}
+      <rect x="4" y="2" width="9" height="2" fill="currentColor" />
+      <rect x="4" y="2" width="2" height="7" fill="currentColor" />
+      <rect x="11" y="2" width="2" height="8" fill="currentColor" />
+      <rect x="1" y="8" width="5" height="3" fill="var(--acento-txt)" />
+      <rect x="8" y="9" width="5" height="3" fill="var(--acento-txt)" />
     </svg>
   );
 }
@@ -60,7 +62,7 @@ export default function IconosEscritorio() {
   const { t } = useIdioma();
   const iconos = [
     { href: "/proyectos", icon: <IconoMonitor />, texto: t("iconProyectos") },
-    { href: "/acerca", icon: <IconoCarpeta />, texto: t("iconAcerca") },
+    { href: "/acerca", icon: <IconoPersona />, texto: t("iconAcerca") },
     { href: "/acerca#contacto", icon: <IconoSobre />, texto: t("iconContacto") },
     { href: "/#musica", icon: <IconoNota />, texto: t("iconMusica") },
   ];

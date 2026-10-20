@@ -8,8 +8,7 @@ import { useIdioma } from "@/i18n/I18nProvider";
 const enlaces = [
   { href: "/", clave: "navInicio" as const },
   { href: "/proyectos", clave: "navProyectos" as const },
-  { href: "/acerca", clave: "navSobre" as const },
-  { href: "/acerca#contacto", clave: "navContacto" as const },
+  { href: "/acerca", clave: "navAcercaContacto" as const },
 ];
 
 /** Barra de menú superior: el "taskbar" del sistema operativo. */
