@@ -79,12 +79,18 @@ export default function IconosEscritorio() {
     const medir = () => {
       const header = document.querySelector("header");
       const main = document.querySelector("main");
-      const primero = main?.firstElementChild;
+      // Bajar desde el primer hijo hasta la primera caja visible (la ventana),
+      // saltando wrappers invisibles con margen interno.
+      let el = main?.firstElementChild ?? null;
+      while (el && el.children.length === 1 && el.firstElementChild) {
+        const tEl = el.getBoundingClientRect().top;
+        const tHijo = el.firstElementChild.getBoundingClientRect().top;
+        if (Math.round(tHijo) > Math.round(tEl)) el = el.firstElementChild;
+        else break;
+      }
       const headerAlto = header?.offsetHeight ?? 45;
       const gap =
-        main && primero
-          ? primero.getBoundingClientRect().top - main.getBoundingClientRect().top
-          : 0;
+        main && el ? el.getBoundingClientRect().top - main.getBoundingClientRect().top : 0;
       setTop(Math.max(headerAlto, Math.round(headerAlto + gap)));
     };
     medir();
