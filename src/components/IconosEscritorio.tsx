@@ -59,8 +59,10 @@ function IconoNota() {
 }
 
 /**
- * Iconos del escritorio: columna fija pegada al borde izquierdo de la
- * ventana (fuera del contenedor, no le roban ancho a las páginas).
+ * Iconos del escritorio: columna fija centrada en el espacio libre a la
+ * izquierda del contenido (fuera del contenedor, no le roban ancho a las
+ * páginas). Su ancho es exactamente el hueco entre el borde y el contenido
+ * central (max-w-6xl = 72rem): (100vw - 72rem) / 2.
  * Solo aparece en pantallas desde 1360px, donde hay espacio libre
  * a los lados del contenido.
  */
@@ -75,7 +77,7 @@ export default function IconosEscritorio() {
 
   return (
     <aside
-      className="pointer-events-none fixed left-0 top-0 z-30 hidden h-screen w-20 flex-col items-center gap-1 pt-16 [@media(min-width:1360px)]:flex"
+      className="pointer-events-none fixed left-0 top-0 z-30 hidden h-screen w-[calc((100vw_-_72rem)/2)] flex-col items-center gap-1 pt-16 [@media(min-width:1360px)]:flex"
       aria-label="Escritorio"
     >
       {iconos.map((i) => (
