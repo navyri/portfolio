@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, VT323 } from "next/font/google";
 import "./globals.css";
 import { perfil } from "@/data/perfil";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { ProveedorIdioma } from "@/i18n/I18nProvider";
+import MenuBar from "@/components/MenuBar";
+import BarraEstado from "@/components/BarraEstado";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const vt323 = VT323({
+  weight: "400",
+  variable: "--font-vt323",
   subsets: ["latin"],
 });
 
@@ -27,13 +31,28 @@ export const metadata: Metadata = {
   },
 };
 
+// Tema oscuro por defecto; respeta la elección guardada (sin parpadeo).
+const scriptTema = `try{var t=localStorage.getItem("tema");document.documentElement.dataset.theme=(t==="light"||t==="dark")?t:"dark";var l=localStorage.getItem("lang");if(l==="en"||l==="es")document.documentElement.lang=l;}catch(e){document.documentElement.dataset.theme="dark";}`;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistMono.variable} ${vt323.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: scriptTema }} />
+      </head>
+      <body className="flex min-h-full flex-col">
+        <ProveedorIdioma>
+          <MenuBar />
+          <main className="mx-auto w-full max-w-6xl flex-1 px-4 pb-16 sm:px-6">
+            {children}
+          </main>
+          <BarraEstado />
+        </ProveedorIdioma>
+      </body>
     </html>
   );
 }

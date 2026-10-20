@@ -1,47 +1,83 @@
+"use client";
+
+import { useState } from "react";
+import Ventana from "@/ui/Ventana";
+import { useIdioma } from "@/i18n/I18nProvider";
 import { perfil } from "@/data/perfil";
 
 export default function Contacto() {
-  return (
-    <section id="contacto" className="border-t border-line/70 py-16">
-      <div className="card relative overflow-hidden">
-        <div
-          className="orb -top-24 -right-16 size-56 bg-accent"
-          aria-hidden
-        />
-        <div className="relative">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
-            Contacto
-          </h2>
-          <p className="mt-3 max-w-xl text-muted">
-            ¿Un proyecto, una práctica o solo quieres saludar? Escríbeme y te
-            respondo.
-          </p>
+  const { t } = useIdioma();
+  const [interes, setInteres] = useState<"si" | "talvez" | null>(null);
 
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a href={`mailto:${perfil.email}`} className="btn btn-primario">
-              ✉ {perfil.email}
-            </a>
-            <a
-              href={perfil.github}
-              target="_blank"
-              rel="noreferrer"
-              className="btn btn-linea"
-            >
-              GitHub ↗
-            </a>
-            {perfil.linkedin && (
+  return (
+    <section id="contacto" className="pt-14">
+      <Ventana titulo={t("contactoTitulo")} ruta="MAILTO://">
+        <div className="grid gap-6 p-5 sm:p-6 lg:grid-cols-[1.4fr_1fr]">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="chip95 texto-verde border-current">● {t("contactoEstado")}</span>
+            </div>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-tenue">
+              {t("contactoIntro")}
+            </p>
+
+            <div className="mt-5 flex flex-wrap gap-3">
+              <a href={`mailto:${perfil.email}`} className="btn95 btn95-primario">
+                ✉ {perfil.email}
+              </a>
               <a
-                href={perfil.linkedin}
+                href={perfil.github}
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-linea"
+                className="btn95"
               >
-                LinkedIn ↗
+                GitHub ↗
               </a>
+              {perfil.linkedin && (
+                <a
+                  href={perfil.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn95"
+                >
+                  LinkedIn ↗
+                </a>
+              )}
+            </div>
+          </div>
+
+          {/* Widget de radios, estilo formulario retro */}
+          <div className="marco bg-fondo p-4">
+            <p className="etiqueta">{t("interes")}</p>
+            <div className="mt-3 space-y-2 text-xs">
+              {(["si", "talvez"] as const).map((op) => (
+                <label key={op} className="flex cursor-pointer items-center gap-2 text-tinta">
+                  <span
+                    aria-hidden
+                    className={`inline-block size-3.5 rounded-full border-2 border-borde ${
+                      interes === op ? "bg-acento" : "bg-panel"
+                    }`}
+                  />
+                  <input
+                    type="radio"
+                    name="interes"
+                    className="sr-only"
+                    checked={interes === op}
+                    onChange={() => setInteres(op)}
+                  />
+                  {t(op === "si" ? "si" : "talvez")}
+                </label>
+              ))}
+            </div>
+            {interes && (
+              <p className="mt-3 texto-crt text-lg text-acento">
+                {t("gracias")}
+                <span className="cursor">▊</span>
+              </p>
             )}
           </div>
         </div>
-      </div>
+      </Ventana>
     </section>
   );
 }

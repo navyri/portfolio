@@ -1,5 +1,20 @@
 import type { NextConfig } from "next";
 
+const slugs = [
+  "ponyarchive",
+  "camel-racing",
+  "navyri-space",
+  "portfolio-ingweb-v2",
+  "horario-ayane",
+  "birthdaycard",
+  "poo-semestre",
+  "citas-veterinarias",
+  "gestion-empleados",
+  "ingweb-final",
+  "whos-that-pokemon",
+  "yes-or-no",
+];
+
 const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
@@ -18,6 +33,15 @@ const nextConfig: NextConfig = {
         hostname: "avatars.githubusercontent.com",
       },
     ],
+  },
+  // navyri.online/<slug> → página del proyecto
+  async rewrites() {
+    return {
+      beforeFiles: slugs.map((slug) => ({
+        source: `/${slug}`,
+        destination: `/proyectos/${slug}`,
+      })),
+    };
   },
 };
 

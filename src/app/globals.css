@@ -1,25 +1,51 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   MARIANA ESGUERRA OS — tema Abyss Black / Blood Wine (default: oscuro)
+   ========================================================================== */
+
 :root {
-  --background: #0a0a12;
-  --foreground: #ece9f6;
-  --muted: #9d97b8;
-  --panel: #12101d;
-  --line: #262040;
-  --accent: #8b5cf6;
-  --accent-2: #22d3ee;
+  --fondo: #090909;
+  --tinta: #f5f4fa;
+  --tenue: #acacac;
+  --panel: #141111;
+  --vino: #280c11;
+  --vino-alto: #3f1117;
+  --borde: #353535;
+  --claro: #4a4442;
+  --sombra: #000000;
+  --acento: #c9646c; /* rojo legible sobre negro */
+  --acento-txt: #c9646c;
+  --sombra-ventana: rgba(0, 0, 0, 0.55);
+}
+
+[data-theme="light"] {
+  --fondo: #f5f4fa;
+  --tinta: #1c0704;
+  --tenue: #4a3a3b;
+  --panel: #ffffff;
+  --vino: #280c11;
+  --vino-alto: #3f1117;
+  --borde: #5b4e55;
+  --claro: #ffffff;
+  --sombra: #5b4e55;
+  --acento: #460e0b;
+  --acento-txt: #460e0b;
+  --sombra-ventana: rgba(91, 78, 85, 0.35);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
+  --color-fondo: var(--fondo);
+  --color-tinta: var(--tinta);
+  --color-tenue: var(--tenue);
   --color-panel: var(--panel);
-  --color-line: var(--line);
-  --color-accent: var(--accent);
-  --color-accent-2: var(--accent-2);
-  --font-sans: var(--font-geist-sans);
+  --color-vino: var(--vino);
+  --color-vino-alto: var(--vino-alto);
+  --color-borde: var(--borde);
+  --color-claro: var(--claro);
+  --color-acento: var(--acento-txt);
   --font-mono: var(--font-geist-mono);
+  --font-crt: var(--font-vt323);
 }
 
 html {
@@ -27,109 +53,256 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  /* rejilla tenue de fondo, tipo escritorio */
+  background-image:
+    linear-gradient(rgba(79, 31, 27, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 31, 27, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
 }
 
 section[id] {
-  scroll-margin-top: 4.5rem;
+  scroll-margin-top: 3.25rem;
 }
 
-/* --- Utilidades del diseño --- */
-
-.text-gradient {
-  background: linear-gradient(92deg, #c4b5fd 0%, #8b5cf6 45%, #22d3ee 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+::selection {
+  background: var(--vino-alto);
+  color: #f5f4fa;
 }
 
-.orb {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(100px);
-  opacity: 0.18;
-  pointer-events: none;
+/* Scrollbars estilo Win95 */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+::-webkit-scrollbar-track {
+  background: var(--fondo);
+  border-left: 1px solid var(--borde);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--vino-alto);
+  border: 2px solid;
+  border-color: var(--claro) var(--sombra) var(--sombra) var(--claro);
 }
 
-.card {
+/* ---------- Ventanas ---------- */
+
+.ventana {
   background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 1rem;
-  padding: 1.25rem;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  border: 2px solid;
+  border-color: var(--claro) var(--sombra) var(--sombra) var(--claro);
+  box-shadow: 3px 3px 0 var(--sombra-ventana);
 }
 
-.card:hover {
-  border-color: #4c3f7d;
-  transform: translateY(-2px);
+.titulo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  background: linear-gradient(90deg, var(--vino) 0%, var(--vino-alto) 100%);
+  color: #f5f4fa;
+  font-family: var(--font-vt323), monospace;
+  font-size: 1.05rem;
+  letter-spacing: 0.09em;
+  line-height: 1.4;
+  user-select: none;
 }
 
-.btn {
+.pts {
+  display: inline-flex;
+  gap: 3px;
+}
+.pt {
+  width: 9px;
+  height: 9px;
+  background: #f5f4fa;
+  border: 1px solid #090909;
+  display: inline-block;
+}
+.pt.ventana-pt {
+  background: #c9646c;
+}
+
+.titulo-ruta {
+  margin-left: auto;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* ---------- Botones biselados ---------- */
+
+.btn95 {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  border-radius: 0.75rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: all 0.15s ease;
-}
-
-.btn-primario {
-  background: var(--accent);
-  color: #ffffff;
-}
-
-.btn-primario:hover {
-  background: #7a4de6;
-}
-
-.btn-linea {
-  border: 1px solid var(--line);
-  color: var(--foreground);
-}
-
-.btn-linea:hover {
-  border-color: #4c3f7d;
+  padding: 0.35rem 0.9rem;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tinta);
   background: var(--panel);
+  border: 2px solid;
+  border-color: var(--claro) var(--sombra) var(--sombra) var(--claro);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.btn95:hover {
+  background: var(--vino);
+  color: #f5f4fa;
+}
+.btn95:active {
+  border-color: var(--sombra) var(--claro) var(--claro) var(--sombra);
+  transform: translate(1px, 1px);
+}
+.btn95-primario {
+  background: var(--vino-alto);
+  color: #f5f4fa;
+}
+.btn95-primario:hover {
+  background: #571a22;
+}
+[data-theme="light"] .btn95-primario:hover {
+  background: #460e0b;
 }
 
-.chip {
+/* ---------- Campos ---------- */
+
+.campo95 {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.8rem;
+  color: var(--tinta);
+  background: var(--fondo);
+  border: 2px solid;
+  border-color: var(--sombra) var(--claro) var(--claro) var(--sombra);
+}
+
+/* ---------- Chips / etiquetas ---------- */
+
+.chip95 {
   display: inline-flex;
   align-items: center;
-  border: 1px solid var(--line);
-  border-radius: 9999px;
-  padding: 0.15rem 0.6rem;
-  font-size: 0.72rem;
-  font-family: var(--font-geist-mono), monospace;
-  color: var(--muted);
+  padding: 0.1rem 0.5rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--tenue);
+  border: 1px solid var(--borde);
+  background: var(--fondo);
 }
 
-/* Rail de la línea de tiempo */
-.rail {
+.etiqueta {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--tenue);
+}
+
+/* ---------- CRT / efectos ---------- */
+
+.crt {
   position: relative;
 }
-
-.rail::before {
+.crt::after {
   content: "";
   position: absolute;
-  left: 0.4rem;
-  top: 0.35rem;
-  bottom: 0.35rem;
-  width: 2px;
-  background: linear-gradient(180deg, var(--accent), var(--accent-2));
-  opacity: 0.45;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.18) 0px,
+    rgba(0, 0, 0, 0.18) 1px,
+    transparent 1px,
+    transparent 3px
+  );
 }
 
-.rail-punto {
-  position: absolute;
-  left: 0;
-  top: 0.4rem;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 9999px;
-  border: 2px solid var(--accent);
-  background: var(--background);
+.texto-crt {
+  font-family: var(--font-vt323), monospace;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 6px rgba(201, 100, 108, 0.45);
+}
+
+.texto-verde {
+  color: #8fbf9a;
+  text-shadow: 0 0 6px rgba(143, 191, 154, 0.4);
+}
+[data-theme="light"] .texto-verde {
+  color: #2f6b3f;
+  text-shadow: none;
+}
+
+/* Líneas del boot log: aparecen de a una */
+.linea-log {
+  opacity: 0;
+  animation: aparecer 0.25s steps(4) forwards;
+  animation-delay: calc(var(--i, 0) * 0.55s);
+}
+@keyframes aparecer {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Barras del ecualizador */
+.eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 22px;
+}
+.eq span {
+  width: 4px;
+  background: var(--acento-txt);
+  animation: saltar 0.9s ease-in-out infinite alternate;
+}
+@keyframes saltar {
+  from {
+    height: 3px;
+  }
+  to {
+    height: 20px;
+  }
+}
+
+.cursor {
+  animation: parpadeo 1s steps(2) infinite;
+}
+@keyframes parpadeo {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .linea-log,
+  .eq span,
+  .cursor {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ---------- Utilidades ---------- */
+
+.marco {
+  border: 2px solid;
+  border-color: var(--sombra) var(--claro) var(--claro) var(--sombra);
+  background: var(--fondo);
+}
+
+.linea-lista {
+  border-bottom: 1px dashed var(--borde);
+}
+
+.btn-enlace {
+  color: var(--acento-txt);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.btn-enlace:hover {
+  color: var(--tinta);
 }
