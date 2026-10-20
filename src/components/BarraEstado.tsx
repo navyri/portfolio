@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useIdioma } from "@/i18n/I18nProvider";
+import { totalProyectos } from "@/data/proyectos";
 
 /** Barra de estado inferior, estilo Windows 95 (con cinta desplazable). */
 export default function BarraEstado() {
@@ -21,7 +22,7 @@ export default function BarraEstado() {
     return () => clearInterval(id);
   }, []);
 
-  const cinta = t("cintaTexto");
+  const cinta = t("cintaTexto").replaceAll("{n}", String(totalProyectos));
 
   return (
     <footer className="sticky bottom-0 z-40 border-t-2 border-sombra border-t-claro bg-panel">

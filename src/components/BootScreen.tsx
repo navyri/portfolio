@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useIdioma } from "@/i18n/I18nProvider";
+import { totalProyectos } from "@/data/proyectos";
 
 /**
  * Pantalla de arranque BIOS: se muestra una sola vez por sesión de pestaña
@@ -40,7 +41,7 @@ export default function BootScreen() {
     t("bootMem"),
     t("boot3"),
     t("bootSpotify"),
-    t("boot4"),
+    t("boot4").replaceAll("{n}", String(totalProyectos)),
     t("boot5"),
     t("bootStart"),
   ];
