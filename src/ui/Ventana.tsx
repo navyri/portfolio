@@ -22,10 +22,14 @@ export default function Ventana({
         <span className="pts" aria-hidden>
           <i className="pt ventana-pt" />
           <i className="pt" />
-          <i className="pt" />
         </span>
         <span className="truncate">{titulo}</span>
-        {ruta && <span className="titulo-ruta hidden truncate sm:inline">{ruta}</span>}
+        {ruta && <span className="titulo-ruta hidden truncate md:inline">{ruta}</span>}
+        <span className="titulo-btns" aria-hidden>
+          <i className="titulo-btn">_</i>
+          <i className="titulo-btn">▫</i>
+          <i className="titulo-btn">✕</i>
+        </span>
       </div>
       {children}
     </div>

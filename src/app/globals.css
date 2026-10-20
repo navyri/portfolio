@@ -1,37 +1,43 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   MARIANA ESGUERRA OS — tema Abyss Black / Blood Wine (default: oscuro)
+   MARIANA ESGUERRA OS — Abyss Black / Blood Wine (oscuro, default)
+   y beige cálido estilo PC vintage (claro)
    ========================================================================== */
 
 :root {
-  --fondo: #090909;
-  --tinta: #f5f4fa;
-  --tenue: #acacac;
-  --panel: #141111;
+  --fondo: #0b0909;
+  --tinta: #f2efe9;
+  --tenue: #b0a9a4;
+  --panel: #151110;
   --vino: #280c11;
   --vino-alto: #3f1117;
-  --borde: #353535;
-  --claro: #4a4442;
+  --vino-brillo: #571a22;
+  --borde: #3a3230;
+  --claro: #524a46;
   --sombra: #000000;
-  --acento: #c9646c; /* rojo legible sobre negro */
-  --acento-txt: #c9646c;
-  --sombra-ventana: rgba(0, 0, 0, 0.55);
+  --acento: #cf6d74; /* rojo legible sobre negro */
+  --acento-txt: #cf6d74;
+  --verde: #8fbf9a;
+  --sombra-ventana: rgba(0, 0, 0, 0.6);
 }
 
 [data-theme="light"] {
-  --fondo: #f5f4fa;
-  --tinta: #1c0704;
-  --tenue: #4a3a3b;
-  --panel: #ffffff;
-  --vino: #280c11;
-  --vino-alto: #3f1117;
-  --borde: #5b4e55;
-  --claro: #ffffff;
-  --sombra: #5b4e55;
-  --acento: #460e0b;
-  --acento-txt: #460e0b;
-  --sombra-ventana: rgba(91, 78, 85, 0.35);
+  /* Beige cálido, papel viejo — nada de blanco puro */
+  --fondo: #e6dec9;
+  --tinta: #2b1512;
+  --tenue: #66564e;
+  --panel: #f3ecdb;
+  --vino: #4a1218;
+  --vino-alto: #6e1c24;
+  --vino-brillo: #7a2129;
+  --borde: #a2937f;
+  --claro: #fffaef;
+  --sombra: #6d6152;
+  --acento: #7a1e26;
+  --acento-txt: #7a1e26;
+  --verde: #3d6b45;
+  --sombra-ventana: rgba(109, 97, 82, 0.4);
 }
 
 @theme inline {
@@ -44,6 +50,7 @@
   --color-borde: var(--borde);
   --color-claro: var(--claro);
   --color-acento: var(--acento-txt);
+  --color-verde: var(--verde);
   --font-mono: var(--font-geist-mono);
   --font-crt: var(--font-vt323);
 }
@@ -52,15 +59,26 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ---------- Escritorio: rejilla + viñeta + textura ---------- */
+
 body {
   background: var(--fondo);
   color: var(--tinta);
   font-family: var(--font-geist-mono), ui-monospace, monospace;
-  /* rejilla tenue de fondo, tipo escritorio */
   background-image:
-    linear-gradient(rgba(79, 31, 27, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(79, 31, 27, 0.08) 1px, transparent 1px);
-  background-size: 44px 44px;
+    radial-gradient(ellipse at 50% -20%, rgba(201, 100, 108, 0.07), transparent 55%),
+    linear-gradient(rgba(122, 30, 38, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 30, 38, 0.055) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    42px 42px,
+    42px 42px;
+}
+[data-theme="light"] body {
+  background-image:
+    radial-gradient(ellipse at 50% -20%, rgba(122, 30, 38, 0.06), transparent 55%),
+    linear-gradient(rgba(109, 97, 82, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(109, 97, 82, 0.07) 1px, transparent 1px);
 }
 
 section[id] {
@@ -69,7 +87,7 @@ section[id] {
 
 ::selection {
   background: var(--vino-alto);
-  color: #f5f4fa;
+  color: #f2efe9;
 }
 
 /* Scrollbars estilo Win95 */
@@ -93,20 +111,23 @@ section[id] {
   background: var(--panel);
   border: 2px solid;
   border-color: var(--claro) var(--sombra) var(--sombra) var(--claro);
-  box-shadow: 3px 3px 0 var(--sombra-ventana);
+  box-shadow:
+    3px 3px 0 var(--sombra-ventana),
+    0 0 0 1px rgba(0, 0, 0, 0.25);
 }
 
 .titulo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.2rem 0.5rem;
-  background: linear-gradient(90deg, var(--vino) 0%, var(--vino-alto) 100%);
-  color: #f5f4fa;
+  padding: 0.18rem 0.45rem;
+  background: linear-gradient(90deg, var(--vino) 0%, var(--vino-brillo) 70%, var(--vino) 100%);
+  color: #f2efe9;
   font-family: var(--font-vt323), monospace;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   letter-spacing: 0.09em;
-  line-height: 1.4;
+  line-height: 1.35;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.55);
   user-select: none;
 }
 
@@ -117,18 +138,43 @@ section[id] {
 .pt {
   width: 9px;
   height: 9px;
-  background: #f5f4fa;
-  border: 1px solid #090909;
+  background: #f2efe9;
+  border: 1px solid #0b0909;
   display: inline-block;
 }
 .pt.ventana-pt {
-  background: #c9646c;
+  background: #cf6d74;
+}
+
+/* Botones de ventana (_ □ ×) */
+.titulo-btns {
+  display: inline-flex;
+  gap: 2px;
+  margin-left: auto;
+  padding-left: 0.5rem;
+}
+.titulo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 14px;
+  font-size: 9px;
+  line-height: 1;
+  color: var(--tinta);
+  background: var(--panel);
+  border: 1px solid;
+  border-color: var(--claro) var(--sombra) var(--sombra) var(--claro);
+}
+.titulo-btn:hover {
+  background: var(--vino-alto);
+  color: #f2efe9;
 }
 
 .titulo-ruta {
-  margin-left: auto;
   font-size: 0.9rem;
   opacity: 0.85;
+  margin-right: 0.35rem;
 }
 
 /* ---------- Botones biselados ---------- */
@@ -141,17 +187,19 @@ section[id] {
   font-family: var(--font-geist-mono), monospace;
   font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   color: var(--tinta);
   background: var(--panel);
   border: 2px solid;
   border-color: var(--claro) var(--sombra) var(--sombra) var(--claro);
   cursor: pointer;
-  transition: background 0.12s;
+  transition:
+    background 0.12s,
+    color 0.12s;
 }
 .btn95:hover {
-  background: var(--vino);
-  color: #f5f4fa;
+  background: var(--vino-alto);
+  color: #f2efe9;
 }
 .btn95:active {
   border-color: var(--sombra) var(--claro) var(--claro) var(--sombra);
@@ -159,13 +207,10 @@ section[id] {
 }
 .btn95-primario {
   background: var(--vino-alto);
-  color: #f5f4fa;
+  color: #f2efe9;
 }
 .btn95-primario:hover {
-  background: #571a22;
-}
-[data-theme="light"] .btn95-primario:hover {
-  background: #460e0b;
+  background: var(--vino-brillo);
 }
 
 /* ---------- Campos ---------- */
@@ -213,8 +258,8 @@ section[id] {
   pointer-events: none;
   background: repeating-linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.18) 0px,
-    rgba(0, 0, 0, 0.18) 1px,
+    rgba(0, 0, 0, 0.16) 0px,
+    rgba(0, 0, 0, 0.16) 1px,
     transparent 1px,
     transparent 3px
   );
@@ -223,19 +268,21 @@ section[id] {
 .texto-crt {
   font-family: var(--font-vt323), monospace;
   letter-spacing: 0.06em;
-  text-shadow: 0 0 6px rgba(201, 100, 108, 0.45);
+  text-shadow: 0 0 7px rgba(207, 109, 116, 0.4);
 }
-
-.texto-verde {
-  color: #8fbf9a;
-  text-shadow: 0 0 6px rgba(143, 191, 154, 0.4);
-}
-[data-theme="light"] .texto-verde {
-  color: #2f6b3f;
+[data-theme="light"] .texto-crt {
   text-shadow: none;
 }
 
-/* Líneas del boot log: aparecen de a una */
+.texto-verde {
+  color: var(--verde);
+  text-shadow: 0 0 6px rgba(143, 191, 154, 0.4);
+}
+[data-theme="light"] .texto-verde {
+  text-shadow: none;
+}
+
+/* Líneas del boot log */
 .linea-log {
   opacity: 0;
   animation: aparecer 0.25s steps(4) forwards;
@@ -247,7 +294,7 @@ section[id] {
   }
 }
 
-/* Barras del ecualizador */
+/* Ecualizador */
 .eq {
   display: inline-flex;
   align-items: flex-end;
@@ -267,6 +314,10 @@ section[id] {
     height: 20px;
   }
 }
+.eq-pausado span {
+  animation-play-state: paused;
+  height: 5px;
+}
 
 .cursor {
   animation: parpadeo 1s steps(2) infinite;
@@ -277,13 +328,119 @@ section[id] {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .linea-log,
-  .eq span,
-  .cursor {
-    animation: none;
-    opacity: 1;
+/* Disco girando (now playing) */
+.disco {
+  animation: girar 4s linear infinite;
+  animation-play-state: paused;
+  border-radius: 9999px;
+}
+.disco-sonando {
+  animation-play-state: running;
+}
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
   }
+}
+
+/* Cinta del status bar */
+.cinta {
+  display: inline-block;
+  white-space: nowrap;
+  animation: desplazar 22s linear infinite;
+}
+@keyframes desplazar {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Arranque (boot screen) ---------- */
+
+.boot-pantalla {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #050404;
+  color: #8fbf9a;
+  font-family: var(--font-vt323), monospace;
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  padding: 8vw;
+  cursor: pointer;
+  animation: boot-fuera 0.35s ease 2.35s forwards;
+}
+@keyframes boot-fuera {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ---------- Iconos de escritorio ---------- */
+
+.icono-escritorio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  width: 78px;
+  padding: 0.45rem 0.25rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+}
+.icono-escritorio:hover,
+.icono-escritorio:focus-visible {
+  border: 1px dotted var(--tenue);
+  background: var(--vino);
+  color: #f2efe9;
+}
+.icono-escritorio:hover .icono-caja,
+.icono-escritorio:focus-visible .icono-caja {
+  border-color: #f2efe9;
+}
+.icono-caja {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  font-size: 22px;
+  background: var(--panel);
+  border: 2px solid;
+  border-color: var(--claro) var(--sombra) var(--sombra) var(--claro);
+}
+.icono-texto {
+  font-family: var(--font-vt323), monospace;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+  line-height: 1.1;
+}
+
+/* Barra de progreso pixel */
+.barra-pixel {
+  height: 12px;
+  background: var(--fondo);
+  border: 2px solid;
+  border-color: var(--sombra) var(--claro) var(--claro) var(--sombra);
+  overflow: hidden;
+}
+.barra-pixel > span {
+  display: block;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--vino-alto) 0 8px,
+    transparent 8px 10px
+  );
 }
 
 /* ---------- Utilidades ---------- */
@@ -305,4 +462,24 @@ section[id] {
 }
 .btn-enlace:hover {
   color: var(--tinta);
+}
+
+.tarjeta-hover:hover {
+  border-color: var(--vino-alto);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .linea-log,
+  .eq span,
+  .cursor,
+  .disco,
+  .cinta,
+  .boot-pantalla {
+    animation: none;
+    opacity: 1;
+    visibility: visible;
+  }
+  .boot-pantalla {
+    display: none;
+  }
 }

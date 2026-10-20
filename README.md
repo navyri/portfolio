@@ -56,6 +56,24 @@ Copia una entrada en `src/data/proyectos.ts` y ajusta `slug`, `nombre`,
 - Después, agrega el `slug` al arreglo de `slugs` en `next.config.ts`
   para que `navyri.online/<slug>` funcione.
 
+## 🎵 NOW.PLAYING con Spotify (opcional)
+
+El widget NOW.PLAYING se sincroniza con tu cuenta de Spotify (misma
+implementación que navyri-site). En **Vercel → Settings → Environment
+Variables** agrega las variables que ya usas en navyri-site:
+
+| Variable | Descripción |
+| --- | --- |
+| `SPOTIFY_CLIENT_ID` | Client ID de tu app en developer.spotify.com |
+| `SPOTIFY_CLIENT_SECRET` | Client secret de la misma app |
+| `SPOTIFY_REFRESH_TOKEN` | Refresh token obtenido con `/api/spotify/login` |
+| `SPOTIFY_REDIRECT_URI` | `https://navyri.online/api/spotify/callback` (solo para volver a conectar) |
+
+Si faltan variables, el widget funciona igual y muestra el tema por defecto
+(DUVET — bôa) sin romper nada. Para regenerar el refresh token: visita
+`https://navyri.online/api/spotify/login`, autoriza y canjea el `?code=` por
+token (el callback ya no muestra credenciales).
+
 ## Despliegue en Vercel + dominio navyri.online
 
 1. Sube el repo a GitHub:
