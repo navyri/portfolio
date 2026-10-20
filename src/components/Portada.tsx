@@ -7,7 +7,6 @@ import NowPlaying from "@/components/NowPlaying";
 import { useIdioma } from "@/i18n/I18nProvider";
 import { perfil } from "@/data/perfil";
 import { totalProyectos } from "@/data/proyectos";
-
 function Relojes() {
   const fmt = (tz: string) =>
     new Intl.DateTimeFormat("es-CO", {
@@ -38,28 +37,6 @@ function Relojes() {
   );
 }
 
-function IconosEscritorio() {
-  const { t } = useIdioma();
-  const iconos = [
-    { href: "/proyectos", emoji: "🖥️", texto: t("iconProyectos") },
-    { href: "/acerca", emoji: "📁", texto: t("iconAcerca") },
-    { href: "/acerca#contacto", emoji: "✉️", texto: t("iconContacto") },
-    { href: "#musica", emoji: "🎵", texto: t("iconMusica") },
-  ];
-  return (
-    <aside className="flex flex-row gap-1 overflow-x-auto pt-2 pb-1 lg:flex-col lg:overflow-visible" aria-label="Escritorio">
-      {iconos.map((i) => (
-        <Link key={i.href} href={i.href} className="icono-escritorio shrink-0">
-          <span className="icono-caja" aria-hidden>
-            {i.emoji}
-          </span>
-          <span className="icono-texto">{i.texto}</span>
-        </Link>
-      ))}
-    </aside>
-  );
-}
-
 export default function Portada() {
   const { t, idioma } = useIdioma();
 
@@ -86,11 +63,8 @@ export default function Portada() {
 
   return (
     <section id="inicio" className="pt-6 sm:pt-10">
-      <div className="grid gap-4 lg:grid-cols-[88px_1fr]">
-        <IconosEscritorio />
-
-        <div className="min-w-0">
-          {/* Ventana principal: nombre + widgets */}
+      <div className="min-w-0">
+        {/* Ventana principal: nombre + widgets */}
           <Ventana titulo={t("biosys")} ruta={"C:\\USERS\\MARIANA"} crt>
             <div className="grid gap-6 p-5 sm:p-8 lg:grid-cols-[1.5fr_1fr]">
               <div>
@@ -185,7 +159,6 @@ export default function Portada() {
             </Ventana>
           </div>
         </div>
-      </div>
     </section>
   );
 }

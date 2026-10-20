@@ -383,18 +383,19 @@ section[id] {
   }
 }
 
-/* ---------- Iconos de escritorio ---------- */
+/* ---------- Iconos de escritorio (columna fija al borde) ---------- */
 
 .icono-escritorio {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
-  width: 78px;
+  width: 76px;
   padding: 0.45rem 0.25rem;
   border: 1px solid transparent;
   cursor: pointer;
   user-select: none;
+  transition: background 0.12s;
 }
 .icono-escritorio:hover,
 .icono-escritorio:focus-visible {
@@ -406,16 +407,20 @@ section[id] {
 .icono-escritorio:focus-visible .icono-caja {
   border-color: #f2efe9;
 }
+.icono-escritorio:hover .icono-texto,
+.icono-escritorio:focus-visible .icono-texto {
+  color: #f2efe9;
+}
 .icono-caja {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  font-size: 22px;
-  background: var(--panel);
+  width: 44px;
+  height: 44px;
+  background: var(--fondo);
   border: 2px solid;
   border-color: var(--claro) var(--sombra) var(--sombra) var(--claro);
+  transition: border-color 0.12s;
 }
 .icono-texto {
   font-family: var(--font-vt323), monospace;
@@ -423,6 +428,8 @@ section[id] {
   letter-spacing: 0.05em;
   text-align: center;
   line-height: 1.1;
+  color: var(--tenue);
+  transition: color 0.12s;
 }
 
 /* Barra de progreso pixel */

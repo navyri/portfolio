@@ -6,6 +6,7 @@ import { ProveedorIdioma } from "@/i18n/I18nProvider";
 import MenuBar from "@/components/MenuBar";
 import BarraEstado from "@/components/BarraEstado";
 import BootScreen from "@/components/BootScreen";
+import IconosEscritorio from "@/components/IconosEscritorio";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col">
         <ProveedorIdioma>
           <BootScreen />
+          <IconosEscritorio />
           <MenuBar />
           <main className="mx-auto w-full max-w-6xl flex-1 px-4 pb-16 sm:px-6">
             {children}
