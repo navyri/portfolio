@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useIdioma } from "@/i18n/I18nProvider";
 
@@ -100,32 +99,6 @@ export default function NowPlaying() {
 
   const contenido = (
     <div className="flex items-center gap-3 p-3">
-      {/* Disco / carátula */}
-      <div
-        className={`disco relative size-14 shrink-0 overflow-hidden rounded-full border-2 ${
-          sonando ? "disco-sonando" : ""
-        }`}
-        style={{
-          borderColor: "var(--vino-alto)",
-          background: "var(--fondo)",
-        }}
-        aria-hidden
-      >
-        {pista.albumImageUrl ? (
-          <Image
-            src={pista.albumImageUrl}
-            alt=""
-            fill
-            sizes="56px"
-            className="object-cover"
-          />
-        ) : (
-          <span className="absolute inset-0 grid place-items-center texto-crt text-2xl text-acento">
-            ♪
-          </span>
-        )}
-      </div>
-
       {/* Texto */}
       <div className="min-w-0 flex-1">
         <p className="etiqueta flex items-center gap-1.5">
@@ -143,7 +116,7 @@ export default function NowPlaying() {
 
       {/* Ecualizador */}
       <span className={`eq shrink-0 ${sonando ? "" : "eq-pausado"}`} aria-hidden>
-        {[0, 1, 2, 3].map((i) => (
+        {[0, 1, 2, 3, 4, 5].map((i) => (
           <span key={i} style={{ animationDelay: `${i * 0.13}s` }} />
         ))}
       </span>

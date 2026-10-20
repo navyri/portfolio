@@ -298,20 +298,20 @@ section[id] {
 .eq {
   display: inline-flex;
   align-items: flex-end;
-  gap: 2px;
-  height: 22px;
+  gap: 3px;
+  height: 32px;
 }
 .eq span {
-  width: 4px;
+  width: 5px;
   background: var(--acento-txt);
   animation: saltar 0.9s ease-in-out infinite alternate;
 }
 @keyframes saltar {
   from {
-    height: 3px;
+    height: 4px;
   }
   to {
-    height: 20px;
+    height: 30px;
   }
 }
 .eq-pausado span {
@@ -325,21 +325,6 @@ section[id] {
 @keyframes parpadeo {
   50% {
     opacity: 0;
-  }
-}
-
-/* Disco girando (now playing) */
-.disco {
-  animation: girar 4s linear infinite;
-  animation-play-state: paused;
-  border-radius: 9999px;
-}
-.disco-sonando {
-  animation-play-state: running;
-}
-@keyframes girar {
-  to {
-    transform: rotate(360deg);
   }
 }
 
@@ -479,7 +464,6 @@ section[id] {
   .linea-log,
   .eq span,
   .cursor,
-  .disco,
   .cinta,
   .boot-pantalla {
     animation: none;
