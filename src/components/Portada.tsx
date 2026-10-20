@@ -40,17 +40,6 @@ function Relojes() {
 export default function Portada() {
   const { t, idioma } = useIdioma();
 
-  const boot = [
-    t("boot1"),
-    t("boot2"),
-    t("bootMem"),
-    t("boot3"),
-    t("bootSpotify"),
-    t("boot4"),
-    t("boot5"),
-    t("bootStart"),
-  ];
-
   const sys = [
     {
       k: t("sysSemestre"),
@@ -126,38 +115,6 @@ export default function Portada() {
               </div>
             </div>
           </Ventana>
-
-          {/* Boot log + leeme */}
-          <div className="mt-4 grid gap-4 lg:grid-cols-[2fr_1fr]">
-            <Ventana titulo="BOOT.LOG" ruta="/var/log">
-              <pre className="space-y-1 overflow-x-auto p-4 text-xs leading-relaxed texto-verde">
-                {boot.map((linea, i) => (
-                  <div key={i} className="linea-log" style={{ ["--i" as string]: i }}>
-                    {linea}
-                  </div>
-                ))}
-              </pre>
-            </Ventana>
-
-            <Ventana titulo="LEEME.TXT">
-              <div className="p-4 text-xs leading-relaxed text-tenue">
-                <p>
-                  {idioma === "es"
-                    ? "Este portafolio es un escritorio: cada proyecto es un archivo. Pulsa «Abrir ▸» para ver su ficha, capturas y demo en vivo."
-                    : "This portfolio is a desktop: every project is a file. Hit “Open ▸” to see its details, screenshots and live demo."}
-                </p>
-                <p className="mt-3">
-                  {idioma === "es"
-                    ? "También puedes visitarlos directamente: navyri.online/ponyarchive, navyri.online/yes-or-no, etc."
-                    : "You can also visit them directly: navyri.online/ponyarchive, navyri.online/yes-or-no, etc."}
-                </p>
-                <p className="mt-3 texto-crt text-lg text-acento">
-                  STATUS: <span className="texto-verde">READY</span>
-                  <span className="cursor">▊</span>
-                </p>
-              </div>
-            </Ventana>
-          </div>
         </div>
     </section>
   );

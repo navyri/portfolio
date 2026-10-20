@@ -107,8 +107,8 @@ export default function NowPlaying() {
       </span>
 
       {/* Texto */}
-      <div className="min-w-0 flex-1 text-right">
-        <p className="etiqueta flex items-center justify-end gap-1.5">
+      <div className="min-w-0 flex-1">
+        <p className="etiqueta flex items-center gap-1.5">
           <span
             className={`text-xs ${sonando ? "cursor texto-verde" : "text-tenue"}`}
             aria-hidden
